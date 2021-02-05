@@ -1,0 +1,44 @@
+{% extends 'Base.html' %}
+{%load crispy_forms_tags %}
+
+{% block content%}
+<div class="content-section">
+    <form method="POST">{% csrf_token %}
+        <fieldset class="form-group">
+            <legend class="border-bottom mb-4">Share Your Post"</legend>
+            {{form|crispy}}
+        </fieldset>
+        <div class="form-group">
+            <button clas="btn btn-outline-info" type="submit">Submit</button>
+        </div>
+    </form>
+    <div class='content-section'>
+        <div class='media'>
+            <div class='media-body'>
+                {% for Account in Accounts %}
+                <h2 class='account-heading'>{{user.username}}#{{forloop.counter}}</h2>
+                <p class='text-secondary'>{{opportunity}}</p>
+                <p class='text-secondary'>{{Company}}</p>
+                <p class='text-secondary'>{{Stage_of_Completion}}</p>
+                <p class='text-secondary'>{{Amount}}</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4">
+
+        <h3>Our Sidebar</h3>
+        <p class='text-muted'>You can put any information here you'd like.
+        <ul class="list-group">
+            <li class="list-group-item list-group-item-light">Accounts</li>
+            <li class="list-group-item list-group-item-light">Opportunities Available</li>
+            <li class="list-group-item list-group-item-light">Amount</li>
+            <li class="list-group-item list-group-item-light">Stage of Completion </li>
+        </ul>
+        </p>
+
+    </div>
+
+
+
+    {% endblock %}
